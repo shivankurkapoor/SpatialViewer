@@ -137,19 +137,12 @@ public class MapViewer extends JFrame implements ActionListener {
 
 	public void ConnectToDB() {
 		try {
-			// loading Oracle Driver
 			DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-			// System.out.println(", Loaded.");
 
 			String URL = "jdbc:oracle:thin:@localhost:1521:";
 			String userName = "system";
 			String password = "dabamalsi";
-
-			// System.out.print("Connecting to DB...");
 			mainConnection = DriverManager.getConnection(URL, userName, password);
-			// System.out.println(", Connected!");
-
-			// mainStatement = mainConnection.createStatement();
 		} catch (Exception e) {
 			System.out.println("Error while connecting to DB: " + e.toString());
 			System.out.println(e.getMessage());
@@ -285,7 +278,6 @@ class DrawFigures{
 				y = y1.get(1);
 				x = x1.get(0);
 				// draw the point
-				// paintPanel.drawAS(panel.getGraphics(), x, y, Color.RED);
 				// draw the circle
 				paintPanel.drawPonds(panel.getGraphics(), x, y, radius, Color.BLACK);
 			}
@@ -318,7 +310,6 @@ class DrawFigures{
 						y.add((int) points[i]);
 					}
 				}
-				// draw the building
 				paintPanel.drawRegions(panel.getGraphics(), x, y, x.size(), Color.BLACK);
 			}
 		} catch (Exception e) {
@@ -329,9 +320,6 @@ class DrawFigures{
 
 class paintPanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private static BufferedImage map;
 
@@ -359,11 +347,6 @@ class paintPanel extends JPanel {
 	public static void highLions(Graphics g, int x, int y, Color c) {
 		g.setColor(c);
 		g.fillRect(x - 5, y - 5, 10, 10);
-	}
-
-	public static void drawAS(Graphics g, int x, int y, Color c) {
-		g.setColor(c);
-		g.fillRect(x, y, 15, 15);
 	}
 
 	public static void drawPonds(Graphics g, int x, int y, int radius, Color c) {
